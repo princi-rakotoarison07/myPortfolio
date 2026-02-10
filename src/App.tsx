@@ -13,7 +13,7 @@ function App() {
     </div>
     
      <MainLayout>
-      <div>
+      <div className='overflow-hidden'>
           <Navbar />
           <Hero />
       </div>
