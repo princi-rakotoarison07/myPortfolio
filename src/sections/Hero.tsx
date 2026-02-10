@@ -2,7 +2,7 @@ import { Download } from 'lucide-react';
 import { FaFacebookF, FaLinkedinIn, FaGithub } from 'react-icons/fa';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
-import NeuralBackground from '../components/NeuralBg';
+// import NeuralBackground from '../components/NeuralBg';
 import Statue from '../components/3dStatue';
 import { useRef } from 'react';
 
@@ -12,7 +12,7 @@ function Hero() {
 
   return (
     <section 
-    className='relative z-20 min-h-[200vh] min-w-screen md:overflow-hidden px-6 md:px-10 flex md:flex-row mt-12 justify-between items-center flex-col-reverse'>
+    className='relative z-20 min-h-[300vh] min-w-screen md:overflow-hidden px-6 md:px-10 flex md:flex-row mt-12 justify-between items-center flex-col-reverse'>
       {/* <NeuralBackground /> */}
       {/* <div id="heroGauche" className='h-screen w-full md:w-1/2 flex flex-col gap-10 justify-center md:justify-start md:mt-10'>
         <h2 className='text-5xl text-primary'><span className='font-semibold'>Full-Stack</span> Web and Mobile Developer.</h2>
@@ -35,7 +35,7 @@ function Hero() {
           <button className='bg-black p-4 text-white text-2xl'>Let's work together</button>
         </div>
       </div> */}
-        <div className='z-20 md:h-screen absolute overflow-hidden flex flex-col justify-center items-center inset-0'
+        <div className='z-20 md:h-full absolute overflow-hidden flex flex-col justify-center items-center inset-0'
           ref={statueRef}
         >
             <p className='relative top-56'>Hi! I'm Jonathan Andria</p>
