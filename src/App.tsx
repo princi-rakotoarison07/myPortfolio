@@ -8,9 +8,7 @@ function App() {
 
   return (
     <>
-    <div className='md:hidden'>
       <NeuralBackground />
-    </div>
     
      <MainLayout>
       <div className='overflow-hidden'>

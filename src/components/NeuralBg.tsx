@@ -317,7 +317,7 @@ export default function NeuralBackground() {
           const dy = particles[i].y - particles[j].y;
           const dist = Math.sqrt(dx * dx + dy * dy);
 
-          if (dist < 180) {
+          if (dist < 120) {
             // highlight if near mouse
             const midX = (particles[i].x + particles[j].x) / 2;
             const midY = (particles[i].y + particles[j].y) / 2;
