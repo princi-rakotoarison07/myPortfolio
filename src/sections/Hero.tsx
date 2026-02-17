@@ -3,6 +3,11 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import Statue from "../components/3dStatue";
 import { useRef, useEffect } from "react";
+import Skills from "./Skills";
+import { sharedProgress } from "../components/constants/constants";
+import { TbLabel } from "react-icons/tb";
+
+// Shared scroll progress — single source of truth
 
 function Hero() {
   const iconStyle =
@@ -10,111 +15,116 @@ function Hero() {
 
   const statueRef = useRef<HTMLDivElement>(null);
   const gaucheRef = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
 
-  const targetProgress = useRef(0);
-  const progressRef = useRef({ value: 0 });
   const timelineRef = useRef<gsap.core.Timeline | null>(null);
+  const isLockedRef = useRef(true); // locked = animations not done yet
+  const isMobile = window.innerWidth < 768;
 
-  // --- GSAP setup ---
+  // =============================
+  // GSAP TIMELINE SETUP
+  // =============================
   useGSAP(() => {
     if (!gaucheRef.current) return;
+    if (isMobile) return;
 
-    const tl = gsap.timeline({ paused: true });
+    const tl = gsap.timeline({ paused: true, onComplete: () => {tl.kill()} });
     const name = gsap.utils.toArray(".name");
-
-    gsap.set(gaucheRef.current, { x: "-105%" });
 
     tl.to(gaucheRef.current, {
       x: "0%",
-      duration: 1,
       ease: "power2.inOut",
     })
-    .to(name, {
-      x: "200%",
-      right: -200,
-      stagger: -0.1,
-      duration: 1.6,
-      ease: "power2.inOut",
-    }, "<")
-    .from(
-      gaucheRef.current.children,
-      {
-        x: "-100%",
-        stagger: 0.15,
-        duration: .6,
-        ease: "power2.out",
-      },
-      "-=0.4" // overlap avec le slide
-    )
-    .to(gaucheRef.current, {
-      x: "-105%",
-      duration: 1,
-      ease: "power2.inOut",
-    })
-    .to(name, {
-      y: 200,
-      autoAlpha: 0,
-      stagger: -0.1,
-      duration: .6,
-      ease: "power2.inOut",
-    }, "<")
-    .to(gaucheRef.current, {
-      x: "56%",
-      duration: 1,
-      ease: "power2.inOut",
-    })
+      .to(
+        name,
+        {
+          x: "200%",
+          right: -200,
+          stagger: -0.1,
+          ease: "power2.inOut",
+        },
+        "<"
+      )
+      .from(
+        gaucheRef.current.children,
+        {
+          x: "-100%",
+          stagger: 0.15,
+          ease: "power2.out",
+        },
+        "-=0.4");
 
     timelineRef.current = tl;
+  }, []);
 
+  // =============================
+  // WHEEL HANDLER — single listener
+  // =============================
+  useEffect(() => {
     const handleWheel = (e: WheelEvent) => {
-      // only react if hero is visible
       if (!statueRef.current) return;
 
       const rect = statueRef.current.getBoundingClientRect();
       const inView = rect.top < window.innerHeight && rect.bottom > 0;
-
       if (!inView) return;
 
-      e.preventDefault();
+      const progress = sharedProgress.value;
+      const scrollingDown = e.deltaY > 0;
+      const scrollingUp = e.deltaY < 0;
 
-      targetProgress.current += e.deltaY * 0.0003;
-      targetProgress.current = Math.max(
-        0,
-        Math.min(1, targetProgress.current)
-      );
+      // Animation not yet complete
+      const animationActive =
+        (scrollingDown && progress < 0.99) || (scrollingUp && progress > 0.01);
+
+      if (animationActive) {
+        e.preventDefault();
+
+        sharedProgress.target += e.deltaY * 0.0003;
+        sharedProgress.target = gsap.utils.clamp(0, 1, sharedProgress.target);
+        isLockedRef.current = true;
+      } else if (scrollingDown && progress >= 0.99) {
+        // Animations complete — unlock and let browser scroll naturally
+        isLockedRef.current = false;
+        if(timelineRef.current) timelineRef.current.kill()
+        // Don't preventDefault() → browser scrolls down naturally
+      }
     };
 
     window.addEventListener("wheel", handleWheel, { passive: false });
-
-    return () => {
-      window.removeEventListener("wheel", handleWheel);
-    };
+    return () => window.removeEventListener("wheel", handleWheel);
   }, []);
 
-  // --- Smooth animation loop using GSAP ticker ---
+  // =============================
+  // SMOOTH SCRUB LOOP — drives Hero timeline from sharedProgress
+  // =============================
   useEffect(() => {
     const update = () => {
-      if (!timelineRef.current) return;
+      // Smooth lerp toward target
+      sharedProgress.value +=
+        (sharedProgress.target - sharedProgress.value) * 0.09;
 
-      progressRef.current.value +=
-        (targetProgress.current - progressRef.current.value) * 0.1;
-
-      timelineRef.current.progress(progressRef.current.value);
+      // Drive Hero's own timeline
+      if (timelineRef.current) {
+        timelineRef.current.progress(sharedProgress.value);
+      }
     };
 
     gsap.ticker.add(update);
-
-    return () => {
-      gsap.ticker.remove(update);
-    };
+    return () => gsap.ticker.remove(update);
   }, []);
 
+  // =============================
+  // JSX
+  // =============================
   return (
-    <section className="relative z-20 min-h-screen w-full md:overflow-hidden px-6 md:px-10 flex md:flex-row md:mt-14 justify-between items-center flex-col-reverse">
+    <section
+      ref={sectionRef}
+      className="relative z-30 min-h-screen w-full md:overflow-hidden px-6 md:px-10 flex md:flex-row md:mt-14 justify-between items-center flex-col-reverse"
+    >
       {/* LEFT SIDE */}
       <div
-        className="h-screen w-full md:w-1/2 flex flex-col gap-10 justify-center md:justify-start md:mt-5"
         ref={gaucheRef}
+        className="relative z-40 h-screen w-full md:w-1/2 flex flex-col gap-10 lg:gap-10 justify-center md:justify-start md:mt-5"
       >
         <h2 className="text-4xl md:text-5xl text-primary">
           <span className="font-semibold">Full-Stack</span> Web and Mobile
@@ -123,46 +133,51 @@ function Hero() {
 
         <h4 className="text-primary text-3xl md:text-4xl relative">
           <span className="font-semibold relative z-20">Creative</span>
-          <div className="relative z-10 -top-3 w-8 h-2.5 bg-red-500"></div>
           Web Designer.
         </h4>
 
+        {/* SOCIALS */}
         <div>
           <h6 className="text-primary text-xl md:text-2xl mb-2">My socials:</h6>
-
           <div className="flex w-[10rem] justify-between">
-            <a href="#" className={iconStyle} aria-label="Facebook">
+            <a href="#" className={iconStyle}>
               <FaFacebookF className="w-6 h-6" />
             </a>
-
-            <a href="#" className={iconStyle} aria-label="LinkedIn">
+            <a href="#" className={iconStyle}>
               <FaLinkedinIn className="w-6 h-6" />
             </a>
-
-            <a href="#" className={iconStyle} aria-label="Github">
+            <a href="#" className={iconStyle}>
               <FaGithub className="w-6 h-6" />
             </a>
           </div>
         </div>
 
-        <div className="flex">
-          <button className="bg-black p-4 text-white text-xl md:text-2xl">
+        {/* CTA */}
+        <div className="flex group">
+          <button
+            className="pointer-events-auto group-hover:bg-red-500 transition-colors duration-700 bg-black p-4 text-white text-xl md:text-2xl"
+            onClick={() => console.log("CTA clicked")}
+          >
             Let's work together
           </button>
         </div>
       </div>
 
-      {/* STATUE CENTER */}
+      {/* STATUE LAYER */}
       <div
-        className="z-20 md:h-full w-full absolute inset-0 overflow-hidden flex flex-row justify-center items-center pointer-events-none"
         ref={statueRef}
+        className="z-10 md:h-full w-full absolute inset-0 overflow-hidden flex justify-center items-center pointer-events-none"
       >
         <h2 className="name relative text-9xl right-32 bottom-10">J</h2>
-        <div className="pointer-events-auto">
+        <div className="pointer-events-auto min-w-screen">
           <Statue />
         </div>
-        <h2 className="name relative text-9xl left-36">A<span className="text-red-500">.</span></h2>
+        <h2 className="name relative text-9xl left-36">
+          A<span className="text-red-500">.</span>
+        </h2>
       </div>
+
+      <Skills />
     </section>
   );
 }
