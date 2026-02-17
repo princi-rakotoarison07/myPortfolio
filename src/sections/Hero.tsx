@@ -85,7 +85,7 @@ function Hero() {
       } else if (scrollingDown && progress >= 0.99) {
         // Animations complete — unlock and let browser scroll naturally
         isLockedRef.current = false;
-        if(timelineRef.current) timelineRef.current.kill()
+        if(timelineRef.current) timelineRef.current.clear()
         // Don't preventDefault() → browser scrolls down naturally
       }
     };
@@ -118,8 +118,9 @@ function Hero() {
   // =============================
   return (
     <section
+    id="hero"
       ref={sectionRef}
-      className="relative z-30 min-h-screen w-full md:overflow-hidden px-6 md:px-10 flex md:flex-row md:mt-14 justify-between items-center flex-col-reverse"
+      className="relative z-30 min-h-screen w-full md:overflow-visible px-6 md:px-10 flex md:flex-row md:mt-14 justify-between items-center flex-col-reverse"
     >
       {/* LEFT SIDE */}
       <div
@@ -176,8 +177,6 @@ function Hero() {
           A<span className="text-red-500">.</span>
         </h2>
       </div>
-
-      <Skills />
     </section>
   );
 }

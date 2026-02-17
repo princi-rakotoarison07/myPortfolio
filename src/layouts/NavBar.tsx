@@ -87,11 +87,11 @@ export function Navbar() {
         >
           <a 
             ref={linkRef1}
-            href="#projects" 
+            href="#hero" 
             className="group hover:text-white text-gray-400 transition-colors duration-300"
             onClick={toggleMenu}
           >
-            Projects
+            Accueil
             <div className=" relative w-20 h-2 bg-red-600 left-28 
             transform scale-x-0 translate-x-3 
             transition-transform 
@@ -100,6 +100,21 @@ export function Navbar() {
             group-hover:translate-x-0
             "
             ></div>
+          </a>
+          <a 
+            ref={linkRef2}
+            href="#skills" 
+            className="hover:text-white text-gray-400 transition-colors duration-200 group"
+            onClick={toggleMenu}
+          >
+            Skills
+            <div className="relative w-20 h-2 bg-red-600 left-28 
+            transform scale-x-0 translate-x-3 
+            transition-transform 
+            duration-300 origin-right 
+            group-hover:scale-x-100
+            group-hover:translate-x-0
+            "></div>
           </a>
           <a 
             ref={linkRef2}
