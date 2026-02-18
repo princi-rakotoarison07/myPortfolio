@@ -65,7 +65,7 @@ function Hero() {
       if (!statueRef.current) return;
 
       const rect = statueRef.current.getBoundingClientRect();
-      const inView = rect.top < window.innerHeight && rect.bottom > 0;
+      const inView = rect.top < window.innerHeight && rect.bottom > window.innerHeight;
       if (!inView) return;
 
       const progress = sharedProgress.value;
@@ -73,8 +73,12 @@ function Hero() {
       const scrollingUp = e.deltaY < 0;
 
       // Animation not yet complete
-      const animationActive =
+      let animationActive =
         (scrollingDown && progress < 0.99) || (scrollingUp && progress > 0.01);
+
+      if ( progress == 0.99 ) {
+        animationActive = false;
+      }
 
       if (animationActive) {
         e.preventDefault();
@@ -82,11 +86,8 @@ function Hero() {
         sharedProgress.target += e.deltaY * 0.0003;
         sharedProgress.target = gsap.utils.clamp(0, 1, sharedProgress.target);
         isLockedRef.current = true;
-      } else if (scrollingDown && progress >= 0.99) {
-        // Animations complete — unlock and let browser scroll naturally
+      } else{
         isLockedRef.current = false;
-        if(timelineRef.current) timelineRef.current.clear()
-        // Don't preventDefault() → browser scrolls down naturally
       }
     };
 

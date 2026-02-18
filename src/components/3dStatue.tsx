@@ -26,7 +26,7 @@ function CameraAndModelController({
       if (isMobile) return
       const canvas = canvasRef.current
 
-      const tl = gsap.timeline({ paused: true, onComplete: () => {tl.clear()} })
+      const tl = gsap.timeline({ paused: true })
 
       tl.to(camera.position, {
         x: 0.6,
