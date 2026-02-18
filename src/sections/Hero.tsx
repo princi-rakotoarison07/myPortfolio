@@ -55,6 +55,7 @@ function Hero() {
         "-=0.4");
 
     timelineRef.current = tl;
+
   }, []);
 
   // =============================
@@ -121,7 +122,7 @@ function Hero() {
     <section
     id="hero"
       ref={sectionRef}
-      className="relative z-30 min-h-screen w-full md:overflow-visible px-6 md:px-10 flex md:flex-row md:mt-14 justify-between items-center flex-col-reverse"
+      className="relative inset-0 z-30 min-h-screen w-full md:overflow-visible px-6 md:px-10 flex md:flex-row md:mt-14 justify-between items-center flex-col-reverse"
     >
       {/* LEFT SIDE */}
       <div

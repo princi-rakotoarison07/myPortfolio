@@ -6,19 +6,19 @@ export const sharedProgress = {
 
 export const mySkills = [
   {
-    title: 'Frontend',
+    title: 'FRONTEND',
     skills: ['React', 'React Native', 'TypeScript', 'Tailwind/Nativewind CSS ', 'GSAP', 'Framer Motion', ]
   },
   {
-    title: 'Backend',
+    title: 'BACKEND',
     skills: ['Node.js', 'Express', 'Django', 'Flask']
   },
   {
-    title: 'Databases',
+    title: 'DATABASES',
     skills: ['MongoDB', 'PostgreSQL', 'MySQL']
   },
   {
-    title: 'Tools & Platforms',
+    title: 'TOOLS & PLATFORMS',
     skills: ['Figma', 'Canvas', 'Adobe Illustrator', 'Git', 'Docker']
   }
 ]

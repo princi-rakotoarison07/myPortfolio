@@ -31,25 +31,60 @@ import React, {
       return (
         <div
           ref={containerRef}
-          className="grid md:grid-cols-2 lg:grid-cols-4 gap-6"
+          className="grid place-items-start w-full h-full"
         >
-          {data.map((group, i) => (
-            <div
-              key={i}
-              ref={(el) => {
-                if (el) cardsRef.current[i] = el;
-              }}
-              className="
+          <div
+              className={`
+                w-full
+                h-full
+                col-start-1
+                row-start-1
                 bg-zinc-900
-                border border-zinc-800
-                rounded-xl
-                p-6
-                shadow-lg
-                hover:scale-[1.03]
+                px-2
+                py-2
                 transition
-              "
+              `}
             >
-              <h3 className="text-lg font-semibold mb-4 text-white">
+              <h3 className="text-8xl mb-4 text-white font-thin">
+                FRONTEND
+              </h3>
+  
+              <ul className="space-y-2">
+                {data[0].skills.map((skill, j) => (
+                  <li
+                    key={j}
+                    className="
+                      text-sm
+                      text-zinc-400
+                      hover:text-white
+                      transition
+                    "
+                  >
+                    {skill}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          {data.slice(1).map((group, index=1) => (
+            <div
+              key={index}
+              ref={(el) => {
+                if (el) cardsRef.current[index] = el;
+              }}
+              className={`
+                w-full
+                h-full
+                col-start-1
+                row-start-1
+                bg-zinc-900
+                transition
+                border-t
+                border-t-1
+                border-t-white
+                px-2
+              `}
+            >
+              <h3 className="text-8xl font-thin mb-4 text-white">
                 {group.title}
               </h3>
   
