@@ -31,7 +31,7 @@ function Skills() {
     );
     // Animate each card individually with a staggered effect
     cards.forEach((card, index) => {
-      gsap.set(card, { yPercent: 100,}); // Initial state for each card
+      gsap.set(card, { yPercent: 105,}); // Initial state for each card
       tl.to(card, {
         yPercent: `${ index==0 ? 16.5 : 16.5 + index * 16.5}`,
         height: 500,
@@ -49,12 +49,12 @@ function Skills() {
     <section
       ref={skillSecRef}
       id="skills"
-      className="min-h-screen  max-w-screen flex flex-col overflow-hidden bg-zinc-900 text-white md:py-6"
+      className="min-h-screen  max-w-screen flex flex-col overflow-hidden bg-zinc-900 text-white py-4 px-4 md:py-6"
     >
     <div className='flex items-center h-fit w-full justify-center gap-10'>
-      <div className='h-[2px] w-48 bg-white'></div>
+      <div className='h-[2px] w-10 md:w-48 bg-white'></div>
         <h2 className="text-2xl font-thin">SKILLS</h2>
-        <div className='h-[2px] w-48 bg-white'></div>
+        <div className='h-[2px] w-10 md:w-48 bg-white'></div>
     </div>
       
       <SkillCards ref={skillsRef} data={mySkills} />

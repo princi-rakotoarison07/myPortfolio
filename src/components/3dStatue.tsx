@@ -1,5 +1,5 @@
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
-import { Stage, Center } from '@react-three/drei'
+import { Stage, Center, OrbitControls } from '@react-three/drei'
 import { Suspense, useRef } from 'react'
 import { Model } from './Greek_statue_head'
 import type { Group } from 'three'
@@ -79,23 +79,26 @@ function CameraAndModelController({
 
 export default function Statue() {
   const canvasRef = useRef<HTMLDivElement>(null)
+  const isMobile = window.innerWidth < 768
 
   return (
-    <div className="w-full h-screen absolute inset-0 overflow-hidden">
+    <div className="w-full h-72 md:h-screen md:absolute inset-0 overflow-visible">
       <div
         ref={canvasRef}
-        className="w-full h-full"
+        className="w-full h-full overflow-visible"
         style={{ transformOrigin: 'center center' }}
       >
         <Canvas
           camera={{ position: [0, 2, 8], fov: 45 }}
-          className="w-full h-full"
+          className="w-full h-full overflow-visible"
+          shadows={false}
         >
           <Suspense fallback={null}>
-            <Stage environment="city" intensity={0.5}>
+            <Stage environment="city" intensity={0.5} shadows={false}>
               <CameraAndModelController canvasRef={canvasRef} />
             </Stage>
           </Suspense>
+          {isMobile && <OrbitControls enableZoom={false}/>}
         </Canvas>
       </div>
     </div>

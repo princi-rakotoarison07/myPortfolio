@@ -7,7 +7,7 @@ export const sharedProgress = {
 export const mySkills = [
   {
     title: 'FRONTEND',
-    skills: ['React', 'React Native', 'TypeScript', 'Tailwind/Nativewind CSS ', 'GSAP', 'Framer Motion', ]
+    skills: ['React', 'React Native', 'TypeScript', 'Tailwind CSS', 'GSAP', 'Framer Motion', ]
   },
   {
     title: 'BACKEND',

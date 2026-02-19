@@ -122,12 +122,16 @@ function Hero() {
     <section
     id="hero"
       ref={sectionRef}
-      className="relative inset-0 z-30 min-h-screen w-full md:overflow-visible px-6 md:px-10 flex md:flex-row md:mt-14 justify-between items-center flex-col-reverse"
+      className="relative flex flex-col-reverse 
+      inset-0 z-30 min-h-screen items-start justify-end pt-20 md:pt-0
+      w-full md:overflow-visible px-4 
+      md:px-10 md:flex md:flex-row 
+      md:mt-14 md:justify-between md:items-center"
     >
       {/* LEFT SIDE */}
       <div
         ref={gaucheRef}
-        className="relative z-40 h-screen w-full md:w-1/2 flex flex-col gap-10 lg:gap-10 justify-center md:justify-start md:mt-5"
+        className="relative z-40 md:h-screen w-full md:w-1/2 flex flex-col gap-10 lg:gap-10 justify-start md:mt-5 mt-20"
       >
         <h2 className="text-4xl md:text-5xl text-primary">
           <span className="font-semibold">Full-Stack</span> Web and Mobile
@@ -169,15 +173,15 @@ function Hero() {
       {/* STATUE LAYER */}
       <div
         ref={statueRef}
-        className="z-10 md:h-full w-full absolute inset-0 overflow-hidden flex justify-center items-center pointer-events-none"
+        className="z-10 md:h-full w-full md:absolute md:inset-0 overflow-visible md:flex flex flex-col justify-end pointer-events-none "
       >
-        <h2 className="name relative text-9xl right-32 bottom-10">J</h2>
-        <div className="pointer-events-auto min-w-screen">
+        {/* <h2 className="name relative text-6xl md:text-9xl left-16 top-20 md:top-0 md:right-32 md:bottom-10">J</h2> */}
+        <div className="pointer-events-auto min-w-screen overflow-visible">
           <Statue />
         </div>
-        <h2 className="name relative text-9xl left-36">
+        {/* <h2 className="name relative text-6xl left-72  md:text-9xl md:left-36">
           A<span className="text-red-500">.</span>
-        </h2>
+        </h2> */}
       </div>
     </section>
   );
