@@ -81,7 +81,7 @@ export function Navbar() {
         
         {/* mobile menu */}
         <div 
-          className="absolute top-0 left-0 min-h-svh w-screen md:w-[30%] bg-black/90 backdrop-blur text-6xl flex flex-col gap-7 font-thin items-center justify-center md:justify-center md:items-start md:px-5"
+          className="absolute top-0 left-0 min-h-svh w-screen md:w-[30%] bg-black backdrop-blur text-6xl flex flex-col gap-7 font-thin items-center justify-center md:justify-center md:items-start md:px-5 "
           ref={menuRef}
           onClick={toggleMenu}
         >
@@ -91,7 +91,7 @@ export function Navbar() {
             className="group hover:text-white text-gray-400 transition-colors duration-300"
             onClick={toggleMenu}
           >
-            Accueil
+            ABOUT ME
             <div className=" relative w-20 h-2 bg-red-600 left-28 
             transform scale-x-0 translate-x-3 
             transition-transform 
@@ -107,7 +107,22 @@ export function Navbar() {
             className="hover:text-white text-gray-400 transition-colors duration-200 group"
             onClick={toggleMenu}
           >
-            Skills
+            SKILLS
+            <div className="relative w-20 h-2 bg-red-600 left-28 
+            transform scale-x-0 translate-x-3 
+            transition-transform 
+            duration-300 origin-right 
+            group-hover:scale-x-100
+            group-hover:translate-x-0
+            "></div>
+          </a>
+          <a 
+            ref={linkRef2}
+            href="#projects" 
+            className="hover:text-white text-gray-400 transition-colors duration-200 group"
+            onClick={toggleMenu}
+          >
+            PROJECTS
             <div className="relative w-20 h-2 bg-red-600 left-28 
             transform scale-x-0 translate-x-3 
             transition-transform 
@@ -122,7 +137,7 @@ export function Navbar() {
             className="hover:text-white text-gray-400 transition-colors duration-200 group"
             onClick={toggleMenu}
           >
-            Contact
+            CONTACT ME
             <div className="relative w-20 h-2 bg-red-600 left-28 
             transform scale-x-0 translate-x-3 
             transition-transform 

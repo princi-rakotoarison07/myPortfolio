@@ -4,6 +4,7 @@ import ScrollTrigger from 'gsap/ScrollTrigger';
 import { mySkills } from '../components/constants/constants';
 import SkillCards from '../components/SkillCard';
 import { useGSAP } from '@gsap/react';
+import SectionTitle from '../components/SectionTitle';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -38,9 +39,6 @@ function Skills() {
         duration: 3,
         ease: 'none', // Stagger effect
       })
-      .to(skillSecRef.current, {
-        height: -800
-      })
     });
 
   }, []);
@@ -51,11 +49,7 @@ function Skills() {
       id="skills"
       className="min-h-screen  max-w-screen flex flex-col overflow-hidden bg-zinc-900 text-white py-4 px-4 md:py-6"
     >
-    <div className='flex items-center h-fit w-full justify-center gap-10'>
-      <div className='h-[2px] w-10 md:w-48 bg-white'></div>
-        <h2 className="text-2xl font-thin">SKILLS</h2>
-        <div className='h-[2px] w-10 md:w-48 bg-white'></div>
-    </div>
+    <SectionTitle title="SKILLS" theme='white' />
       
       <SkillCards ref={skillsRef} data={mySkills} />
     </section>

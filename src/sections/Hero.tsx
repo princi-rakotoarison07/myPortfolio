@@ -5,9 +5,10 @@ import Statue from "../components/3dStatue";
 import { useRef, useEffect } from "react";
 import Skills from "./Skills";
 import { sharedProgress } from "../components/constants/constants";
-import { TbLabel } from "react-icons/tb";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-// Shared scroll progress — single source of truth
+// Shared scroll progress — single source of truth\
+gsap.registerPlugin(ScrollTrigger);
 
 function Hero() {
   const iconStyle =
@@ -16,6 +17,8 @@ function Hero() {
   const statueRef = useRef<HTMLDivElement>(null);
   const gaucheRef = useRef<HTMLDivElement>(null);
   const sectionRef = useRef<HTMLElement>(null);
+  const seeRef = useRef<HTMLDivElement>(null);
+  const togetherRef = useRef<HTMLDivElement>(null);
 
   const timelineRef = useRef<gsap.core.Timeline | null>(null);
   const isLockedRef = useRef(true); // locked = animations not done yet
@@ -52,7 +55,17 @@ function Hero() {
           stagger: 0.15,
           ease: "power2.out",
         },
-        "-=0.4");
+        "-=0.4")
+
+        .fromTo(seeRef.current, 
+          { clipPath: "polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%)" }, 
+          { 
+            clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)", 
+            duration: 0.1, 
+            ease: "power2.inOut" ,
+            scrub:2
+          }
+        );
 
     timelineRef.current = tl;
 
@@ -160,14 +173,29 @@ function Hero() {
         </div>
 
         {/* CTA */}
-        <div className="flex group">
-          <button
-            className="pointer-events-auto group-hover:bg-red-500 transition-colors duration-700 bg-black p-4 text-white text-xl md:text-2xl"
-            onClick={() => console.log("CTA clicked")}
+        <div className="flex gap-1 w-full">
+          <div className="flex group w-2/3 h-[50px]" ref={togetherRef}>
+            <button
+              className=" w-full h-full pointer-events-auto group-hover:bg-red-500 transition-colors duration-700 bg-black px-2 text-white text-xl md:text-2xl"
+              onClick={() => console.log("CTA clicked")}
+            >
+              Let's work together
+            </button>
+          </div>
+          <div className="flex group w-1/3"
+            ref={seeRef}
           >
-            Let's work together
-          </button>
+            <span className="absolute z-10 inset-0 w-0 bg-black transition-all duration-500 ease-out group-hover:w-full"></span>
+            <a
+              href="#projects"
+              className=" z-20 flex items-center justify-center w-full h-full pointer-events-auto group-hover:text-white border-2 border-black transition-all duration-700 px-2 text-md md:text-2xl"
+              onClick={() => console.log("CTA clicked")}
+            >
+              See my work
+            </a>
+          </div>
         </div>
+        
       </div>
 
       {/* STATUE LAYER */}

@@ -94,7 +94,7 @@ export default function Statue() {
           shadows={false}
         >
           <Suspense fallback={null}>
-            <Stage environment="city" intensity={0.5} shadows={false}>
+            <Stage environment="city" intensity={0.5}>
               <CameraAndModelController canvasRef={canvasRef} />
             </Stage>
           </Suspense>
