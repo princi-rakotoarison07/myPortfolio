@@ -2,15 +2,15 @@ import { useRef } from 'react';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import { mySkills } from '../components/constants/constants';
-import SkillCards from '../components/SkillCard';
+import SkillCards, {type SkillCardsHandle} from '../components/SkillCard';
 import { useGSAP } from '@gsap/react';
 import SectionTitle from '../components/SectionTitle';
 
 gsap.registerPlugin(ScrollTrigger);
 
 function Skills() {
-  const skillsRef = useRef(null);
-  const skillSecRef = useRef(null);
+  const skillsRef = useRef<SkillCardsHandle>(null);
+  const skillSecRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
     if (!skillsRef.current || !skillSecRef.current) return;
@@ -24,7 +24,6 @@ function Skills() {
           end: `+=${mySkills.length * 700}`,
           scrub: 3,
           pin: true,// Helps with smooth pinning
-          markers: true,
           smooth: true,
           smoothAmount: 0.5, // Adjust for smoother pinning 
         }

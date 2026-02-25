@@ -152,8 +152,8 @@ function Hero() {
         </h2>
 
         <h4 className="text-primary text-3xl md:text-4xl relative">
-          <span className="font-semibold relative z-20">Creative</span>
-          Web Designer.
+          <span className="font-semibold relative z-20 mr-4"><div className="w-10 h-2 z-10 bg-red-500 relative bottom-2"></div>Creative</span>
+           Web Designer.
         </h4>
 
         {/* SOCIALS */}
@@ -174,9 +174,9 @@ function Hero() {
 
         {/* CTA */}
         <div className="flex gap-1 w-full">
-          <div className="flex group w-2/3 h-[50px]" ref={togetherRef}>
+          <div className="flex group w-2/3 h-[50px] " ref={togetherRef}>
             <button
-              className=" w-full h-full pointer-events-auto group-hover:bg-red-500 transition-colors duration-700 bg-black px-2 text-white text-xl md:text-2xl"
+              className=" w-full h-full pointer-events-auto rounded-md group-hover:bg-red-500 transition-colors duration-700 bg-black px-2 text-white text-xl md:text-2xl"
               onClick={() => console.log("CTA clicked")}
             >
               Let's work together
@@ -188,7 +188,7 @@ function Hero() {
             <span className="absolute z-10 inset-0 w-0 bg-black transition-all duration-500 ease-out group-hover:w-full"></span>
             <a
               href="#projects"
-              className=" z-20 flex items-center justify-center w-full h-full pointer-events-auto group-hover:text-white border-2 border-black transition-all duration-700 px-2 text-md md:text-2xl"
+              className=" z-20 flex items-center justify-center w-full rounded-md h-full pointer-events-auto group-hover:text-white border-2 border-black transition-all duration-700 px-2 text-md md:text-2xl"
               onClick={() => console.log("CTA clicked")}
             >
               See my work

@@ -1,91 +1,12 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import React, {
+import {
   forwardRef,
   useImperativeHandle,
   useRef,
 } from "react";
 
 import { SvgList } from "./SvgList";
-// import {
-//   siReact,
-//   siTypescript,
-//   siTailwindcss,
-//   siGreensock,
-//   siFramer,
-//   siNodedotjs,
-//   siExpress,
-//   siDjango,
-//   siFlask,
-//   siMongodb,
-//   siPostgresql,
-//   siMysql,
-//   siFigma,
-//   siCanvas,
-//   // siAdobeillustrator,
-//   siGit,
-//   siDocker,
-// } from "simple-icons";
-
-// const skillIconMap: Record<string, { path: string }> = {
-//   // Frontend
-//   React: siReact,
-//   "React Native": siReact,
-//   TypeScript: siTypescript,
-//   "Tailwind CSS": siTailwindcss,
-//   GSAP: siGreensock,
-//   "Framer Motion": siFramer,
-//   // Backend
-//   "Node.js": siNodedotjs,
-//   Express: siExpress,
-//   Django: siDjango,
-//   Flask: siFlask,
-//   // Databases
-//   MongoDB: siMongodb,
-//   PostgreSQL: siPostgresql,
-//   MySQL: siMysql,
-//   // Tools & Platforms
-//   Figma: siFigma,
-//   Canvas: siCanvas,
-//   // "Adobe Illustrator": siAdobeillustrator,
-//   Git: siGit,
-//   Docker: siDocker,
-// };
-
-// function SkillCard({ skill }: { skill: string }) {
-//   const icon = skillIconMap[skill];
-
-//   return (
-//     <li className="
-//       group
-//       flex flex-col items-center justify-center gap-3
-//       p-4
-//       border border-white/20
-//       hover:border-white
-//       transition-all duration-300
-//       aspect-square
-//       md:w-[120px]
-//     ">
-//       {icon ? (
-//         <svg
-//           role="img"
-//           viewBox="0 0 24 24"
-//           className="w-7 h-7 fill-white opacity-50 group-hover:opacity-100 transition-opacity duration-300"
-//           xmlns="http://www.w3.org/2000/svg"
-//         >
-//           <path d={icon.path} />
-//         </svg>
-//       ) : (
-//         <span className="text-white/50 group-hover:text-white text-xl transition-colors duration-300">
-//           •
-//         </span>
-//       )}
-//       <span className="text-white/40 group-hover:text-white text-[12px] font-thin tracking-widest uppercase transition-colors duration-300 text-center leading-tight">
-//         {skill.trim()}
-//       </span>
-//     </li>
-//   );
-// }
 
 export type SkillGroup = {
   title: string;
@@ -105,7 +26,7 @@ const SkillCards = forwardRef<SkillCardsHandle, Props>(({ data }, ref) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<HTMLDivElement[]>([]);
   const frontRef = useRef<HTMLDivElement>(null);
-  const SkillContainerStyle = "group flex flex-col items-center justify-center gap-3 p-4 border border-white/20 hover:border-white transition-all duration-300 aspect-square md:w-[120px]";
+  const SkillContainerStyle = "group flex flex-col items-center justify-center gap-3 p-4 rounded-md border border-white/20 hover:border-white transition-all duration-300 aspect-square md:w-[120px]";
   const SkillStyle ="text-white/40 group-hover:text-white text-[12px] font-thin tracking-widest uppercase transition-colors duration-300 text-center leading-tight"
   useImperativeHandle(ref, () => ({
     container: containerRef.current,
@@ -113,23 +34,30 @@ const SkillCards = forwardRef<SkillCardsHandle, Props>(({ data }, ref) => {
   }));
 
   useGSAP(() => {
-    if (!frontRef.current) return;
-    gsap.from(frontRef.current, {
-      scrollTrigger: {
-        trigger: containerRef.current,
-        start: "top 80%",
-        end: "bottom 60%",
-        scrub: 2,
-      },
-      yPercent: 10,
-      duration: 0.8
-    })
+    if (!containerRef.current) return;
+    gsap.fromTo(
+      containerRef.current.children,
+      { opacity: 0, y: 100 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        stagger: 0.4,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top 80%",
+          end: "top 30%",
+          scrub: 2,
+        },
+      }
+    );
   })
 
   return (
     <div
       ref={containerRef}
-      className="grid place-items-start w-full h-full"
+      className="grid place-items-start w-full h-full relative"
     >
       {/* First group — FRONTEND */}
       <div
