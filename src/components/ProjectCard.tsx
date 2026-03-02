@@ -12,6 +12,7 @@ export type ProjectCardGroup = {
   desc: string;
   stacks: string[];
   images: string[];
+  category: "web" | "mobile" | "design";
 }
 
 type Props = {
@@ -39,7 +40,7 @@ const ProjectCard = forwardRef<ProjectsCardHandle, Props>(({ data }, ref) => {
   }));
 
   useGSAP(() => {
-    // if (!containerRef.current) return;
+    if (!containerRef.current) return;
 
     // gsap.fromTo(
     //   containerRef.current.children,
@@ -59,12 +60,13 @@ const ProjectCard = forwardRef<ProjectsCardHandle, Props>(({ data }, ref) => {
     //   }
     // );
 
+    
     if (selectedImage && modalRef.current) {
       document.body.style.overflow = "hidden";
 
       gsap.fromTo(
         modalRef.current,
-        { opacity: 0, scale: 0 },
+        { opacity: 0, scale: 0.9 },
         { opacity: 1, scale:1, duration: 0.6 }
       );
 
@@ -76,101 +78,114 @@ const ProjectCard = forwardRef<ProjectsCardHandle, Props>(({ data }, ref) => {
     } else {
       document.body.style.overflow = "auto";
     }
-  }, []);
+
+    
+  const ctx = gsap.context(() => {
+    const cards = cardsRef.current;
+
+    cards.forEach((card) => {
+      if (!card) return;
+
+      gsap.set(card, {
+        opacity: 0,
+        y: 140,
+        scale: 0.95,
+        filter: "blur(8px)"
+      });
+
+      gsap.to(card, {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        filter: "blur(0px)",
+        duration: 0.9,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: card,
+          start: "top 85%",
+          toggleActions: "play none none reverse",
+        }
+      });
+    });
+  }, containerRef);
+
+  return ( () => ctx.revert());
+  }, [data]);
 
   const closeModal = () => {
     gsap.to(modalRef.current, {
       opacity: 0,
-      scale:0,
+      transformOrigin: "left",
       duration: 0.6,
       onComplete: () => setSelectedImage(null),
     });
   };
 
   return (
-    <>{
-      data.map((project, index) => (
-        <div
-        key={index}
-        ref={(el) => { if (el) cardsRef.current[index] = el; }}
-        className="max-w-5xl max-h-screen w-full flex flex-col gap-16"
+    <>
+      <div
+        ref={containerRef}
+        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-10 max-w-7xl mx-auto"
       >
-        {/* Title */}
-        <div className="space-y-4">
-          <h2 className="text-4xl font-semibold tracking-tight text-black">
-            {project.title},
-          </h2>
-          <p className="text-black/70 leading-relaxed max-w-2xl">{project.desc}</p>
-        </div>
-
-        {/* Carousel */}
-        <div className="relative">
-          <div className="overflow-hidden shadow-lg" ref={emblaRef}>
-            <div className="flex">
-              {project.images.map((src, index) => (
-                <div
-                  key={index}
-                  className="min-w-full flex items-center justify-center"
-                >
-                  <img
-                    src={src}
-                    alt={`projectImage${index + 1}`}
-                    onClick={() => setSelectedImage(src)}
-                    className="w-full h-[400px] object-cover cursor-pointer hover:opacity-80 transition"
-                  />
-                </div>
-              ))}
+        {data.map((project, index) => (
+          <div
+            key={index}
+            ref={(el) => { if (el) cardsRef.current[index] = el; }}
+            className="bg-zinc-800 rounded-xl overflow-hidden hover:-translate-y-2 transition-all duration-300"
+          >
+            {/* Image */}
+            <div className="relative h-56 overflow-hidden">
+              <img
+                src={project.images[0]}
+                alt={project.title}
+                onClick={() => setSelectedImage(project.images[0])}
+                className="w-full h-full object-cover cursor-pointer hover:scale-105 transition duration-500"
+              />
+            </div>
+  
+            {/* Content */}
+            <div className="p-6 space-y-4 text-white">
+              <h3 className="text-xl font-semibold">
+                {project.title}
+              </h3>
+  
+              <p className="text-zinc-400 text-sm leading-relaxed">
+                {project.desc}
+              </p>
+  
+              {/* Stacks */}
+              <div className="flex flex-wrap gap-2 pt-2">
+                {project.stacks.map((stack, i) => (
+                  <span
+                    key={i}
+                    className="text-xs bg-zinc-700 px-3 py-1 rounded-full text-zinc-300"
+                  >
+                    {stack}
+                  </span>
+                ))}
+              </div>
             </div>
           </div>
-
-          <div className="flex justify-between mt-4">
-            <button
-              onClick={() => emblaApi?.scrollPrev()}
-              className="border border-black px-4 py-2 text-sm rounded-md hover:bg-black hover:text-white transition"
-            >
-              Prev
-            </button>
-
-            <button
-              onClick={() => emblaApi?.scrollNext()}
-              className="border border-black px-4 py-2 text-sm rounded-md hover:bg-black hover:text-white transition"
-            >
-              Next
-            </button>
-          </div>
-        </div>
-
-        {/* Stacks */}
-        <ul className="grid grid-cols-4 md:flex md:flex-wrap gap-1">
-          {project.stacks.map((stack, index) => (
-            <SvgList
-              styleCont={StackContainerStyle}
-              style={StackStyle}
-              key={index}
-              skill={stack}
-            />
-          ))}
-        </ul>
+        ))}
       </div>
-      ))
-    }
-
+  
       {/* FULLSCREEN MODAL */}
       {selectedImage && (
-  <div
-    ref={modalRef}
-    onClick={closeModal}
-    className="fixed inset-0 bg-black/90 flex items-center justify-center z-50 cursor-pointer"
-  >
-    <img
-      src={selectedImage}
-      className="fullscreen-image max-w-[90%] max-h-[90%] object-contain"
-      alt="fullscreen"
-    />
-  </div>
-)}
+        <div
+          ref={modalRef}
+          onClick={closeModal}
+          className="fixed inset-0 bg-black/90 flex items-center justify-center z-50 cursor-pointer"
+        >
+          <img
+            src={selectedImage}
+            className="fullscreen-image max-w-[90%] max-h-[90%] object-contain"
+            alt="fullscreen"
+          />
+        </div>
+      )}
     </>
   );
+  
 });
 
 export default ProjectCard;

@@ -35,7 +35,21 @@ export const projectsList = [
       "/img/projectsImg/smartSaha/3.jpg",
       "/img/projectsImg/smartSaha/4.jpg",
       "/img/projectsImg/smartSaha/5.jpg",
-    ]
+    ],
+    category: "mobile"
+  },
+  {
+    title: "E-Kaly",
+    desc: "A deliberately vulnerable web application built to demonstrate XSS attacks and mitigation techniques including CSP and input sanitization.",
+    stacks: ["React", "TypeScript", "Node.js", "MongoDB"],
+    images: [
+      "/img/projectsImg/smartSaha/1.jpg",
+      "/img/projectsImg/smartSaha/2.jpg",
+      "/img/projectsImg/smartSaha/3.jpg",
+      "/img/projectsImg/smartSaha/4.jpg",
+      "/img/projectsImg/smartSaha/5.jpg",
+    ],
+    category: "mobile"
   },
   {
     title: "Smartsaha",
@@ -47,7 +61,8 @@ export const projectsList = [
       "/img/projectsImg/smartSaha/3.jpg",
       "/img/projectsImg/smartSaha/4.jpg",
       "/img/projectsImg/smartSaha/5.jpg",
-    ]
+    ],
+    category: "web"
   },
   {
     title: "Django XSS Lab",
@@ -68,5 +83,14 @@ export const projectsList = [
     images: [
       "/img/rsa/1.png",
     ],
+    category: "design"
   },
+];
+
+
+export const navLinks = [
+  { label: "ABOUT ME", href: "#hero" },
+  { label: "SKILLS", href: "#skills" },
+  { label: "PROJECTS", href: "#projects" },
+  { label: "CONTACT ME", href: "#contact" },
 ];

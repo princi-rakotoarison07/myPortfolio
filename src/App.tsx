@@ -6,6 +6,7 @@ import Hero from './sections/Hero'
 import Skills from './sections/Skills';
 import Projects from './sections/Projects'
 import { useRef } from 'react'
+import Contact from './sections/Contact'
 
 function App() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -19,6 +20,7 @@ function App() {
           <Hero/>
           <Skills/>
           <Projects />
+          <Contact />
       </div>
     </MainLayout>
     </>

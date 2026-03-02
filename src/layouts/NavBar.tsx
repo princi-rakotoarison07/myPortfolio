@@ -2,6 +2,8 @@ import { useState, useRef } from "react";
 import Logo from "../components/Logo";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import { navLinks } from "../components/constants/constants";
+import { NavLinkItem } from "../components/NavLinkItem";
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState<boolean>(false); // Changed to false
@@ -17,10 +19,10 @@ export function Navbar() {
 
   useGSAP(() => {
     gsap.set(menuRef.current, { x: isMobile?"100%":"340%" });
-    gsap.set([linkRef1.current,linkRef2.current], {
-      autoAlpha: 0,
-      x: 20,
-    });
+    // gsap.set([linkRef1.current,linkRef2.current], {
+    //   autoAlpha: 0,
+    //   x: 20,
+    // });
 
     t.current = gsap
       .timeline({ paused: true })
@@ -85,67 +87,16 @@ export function Navbar() {
           ref={menuRef}
           onClick={toggleMenu}
         >
-          <a 
-            ref={linkRef1}
-            href="#hero" 
-            className="group hover:text-white text-gray-400 transition-colors duration-300"
-            onClick={toggleMenu}
-          >
-            ABOUT ME
-            <div className=" relative w-20 h-2 bg-red-600 left-28 
-            transform scale-x-0 translate-x-3 
-            transition-transform 
-            duration-300 origin-right 
-            group-hover:scale-x-100
-            group-hover:translate-x-0
-            "
-            ></div>
-          </a>
-          <a 
-            ref={linkRef2}
-            href="#skills" 
-            className="hover:text-white text-gray-400 transition-colors duration-200 group"
-            onClick={toggleMenu}
-          >
-            SKILLS
-            <div className="relative w-20 h-2 bg-red-600 left-28 
-            transform scale-x-0 translate-x-3 
-            transition-transform 
-            duration-300 origin-right 
-            group-hover:scale-x-100
-            group-hover:translate-x-0
-            "></div>
-          </a>
-          <a 
-            ref={linkRef2}
-            href="#projects" 
-            className="hover:text-white text-gray-400 transition-colors duration-200 group"
-            onClick={toggleMenu}
-          >
-            PROJECTS
-            <div className="relative w-20 h-2 bg-red-600 left-28 
-            transform scale-x-0 translate-x-3 
-            transition-transform 
-            duration-300 origin-right 
-            group-hover:scale-x-100
-            group-hover:translate-x-0
-            "></div>
-          </a>
-          <a 
-            ref={linkRef2}
-            href="#contact" 
-            className="hover:text-white text-gray-400 transition-colors duration-200 group"
-            onClick={toggleMenu}
-          >
-            CONTACT ME
-            <div className="relative w-20 h-2 bg-red-600 left-28 
-            transform scale-x-0 translate-x-3 
-            transition-transform 
-            duration-300 origin-right 
-            group-hover:scale-x-100
-            group-hover:translate-x-0
-            "></div>
-          </a>
+          {
+            navLinks.map((link, index) => (
+              <NavLinkItem 
+                key={index} 
+                label={link.label} 
+                href={link.href} 
+                onClick={toggleMenu} 
+              />
+            ))
+          }
         </div>
       </nav>
     </header>
