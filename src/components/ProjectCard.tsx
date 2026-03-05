@@ -1,9 +1,7 @@
 import { useRef, useState,forwardRef, useImperativeHandle } from "react";
-import useEmblaCarousel from "embla-carousel-react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { SvgList } from "./SvgList";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -27,13 +25,12 @@ const ProjectCard = forwardRef<ProjectsCardHandle, Props>(({ data }, ref) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<HTMLDivElement[]>([]);
   const modalRef = useRef<HTMLDivElement>(null);
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
-  const StackContainerStyle =
-    "group flex flex-col items-center bg-zinc-900 justify-center gap-3 p-4 rounded-md hover:border-black transition-all duration-300 aspect-square md:w-[120px]";
-  const StackStyle =
-    "text-zinc-500 group-hover:text-white text-[12px] font-normal tracking-widest uppercase transition-colors duration-300 text-center leading-tight";
+  // const StackContainerStyle =
+  //   "group flex flex-col items-center bg-zinc-900 justify-center gap-3 p-4 rounded-md hover:border-black transition-all duration-300 aspect-square md:w-[120px]";
+  // const StackStyle =
+  //   "text-zinc-500 group-hover:text-white text-[12px] font-normal tracking-widest uppercase transition-colors duration-300 text-center leading-tight";
   
     useImperativeHandle(ref, () => ({
       cards: cardsRef.current,

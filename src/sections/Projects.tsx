@@ -1,4 +1,4 @@
-import React, { useRef, useState, useMemo } from "react";
+import  { useRef, useState, useMemo } from "react";
 import SectionTitle from "../components/SectionTitle";
 import ProjectCard, { type ProjectsCardHandle } from "../components/ProjectCard";
 import { projectsList } from "../components/constants/constants";
@@ -20,7 +20,6 @@ function Projects() {
 
   useGSAP(() => {
     if (!projectCardRef.current || !projectSecRef.current) return;
-    const cards = projectCardRef.current.cards;
 
     // const tl = gsap.timeline({
     //   scrollTrigger: {

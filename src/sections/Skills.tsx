@@ -23,9 +23,7 @@ function Skills() {
           start: 'top top',
           end: `+=${mySkills.length * 700}`,
           scrub: 3,
-          pin: true,// Helps with smooth pinning
-          smooth: true,
-          smoothAmount: 0.5, // Adjust for smoother pinning 
+          pin: true,// Helps with smooth pinning // Adjust for smoother pinning 
         }
       }
     );

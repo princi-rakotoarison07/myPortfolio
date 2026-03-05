@@ -3,7 +3,6 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import Statue from "../components/3dStatue";
 import { useRef, useEffect } from "react";
-import Skills from "./Skills";
 import { sharedProgress } from "../components/constants/constants";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
