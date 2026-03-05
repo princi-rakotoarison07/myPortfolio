@@ -40,28 +40,28 @@ function Contact() {
     <section
       id="contact"
       ref={sectionRef}
-      className="max-h-screen w-full bg-zinc-900 text-white px-6 py-6"
+      className="min-h-screen md:h-fit w-full bg-zinc-900 text-white px-6 py-6"
     >
       <div className="max-w-6xl mx-auto flex flex-col justify-between">
 
         <SectionTitle title="CONTACT" theme="white" />
 
         {/* Intro */}
-        <div className="fade-up mt-10 mb-10 max-w-2xl">
-          <p className="text-zinc-400 leading-relaxed">
-            Have a project in mind or just want to connect?  
-            Feel free to reach out. I’m always open to discussing new ideas,
-            collaborations or opportunities.
-          </p>
-        </div>
+       
 
         {/* Content Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 mt-10">
 
           {/* LEFT - Contact Info */}
-          <div className="fade-up space-y-8">
-
-            <div>
+          <div className="fade-up flex flex-col justify-between h-full">
+            <div className="fade-up mb-10 max-w-2xl">
+              <p className="text-zinc-400 leading-relaxed">
+                Have a project in mind or just want to connect?  
+                Feel free to reach out. I’m always open to discussing new ideas,
+                collaborations or opportunities.
+              </p>
+            </div>
+            <div className="fade-up">
               <h3 className="text-sm uppercase tracking-widest text-zinc-500 mb-2">
                 Email
               </h3>
@@ -73,14 +73,14 @@ function Contact() {
               </a>
             </div>
 
-            <div>
+            <div className="fade-up">
               <h3 className="text-sm uppercase tracking-widest text-zinc-500 mb-2">
                 Location
               </h3>
               <p className="text-lg">Madagascar</p>
             </div>
 
-            <div>
+            <div className="fade-up">
               <h3 className="text-sm uppercase tracking-widest text-zinc-500 mb-4">
                 Social
               </h3>
@@ -101,9 +101,9 @@ function Contact() {
 
           {/* RIGHT - Contact Form */}
           <form
-            action="https://formspree.io/f/yourformid"
+            action="https://formspree.io/f/xpqyapzv"
             method="POST"
-            className="fade-up flex flex-col gap-6"
+            className="fade-up flex flex-col gap-6 justify-center h-full w-full" 
           >
             <input
               type="text"

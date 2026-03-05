@@ -8,15 +8,15 @@ type NavLinkItemProps = {
     return (
       <a
         href={href}
-        className="group hover:text-white text-gray-400 transition-colors duration-300"
+        className="group hover:text-white text-left text-gray-400 transition-colors duration-300 text-thin"
         onClick={onClick}
       >
         {label}
         <div
           className="
-            relative w-20 h-2 bg-red-600 left-28
-            transform scale-x-0 translate-x-3
-            transition-transform duration-300 origin-right
+            relative w-16 h-[3.5px] mt-2 bg-red-600 self-baseline
+            transform scale-x-0 translate-x-full
+            transition-transform duration-700 origin-right
             group-hover:scale-x-100
             group-hover:translate-x-0
           "

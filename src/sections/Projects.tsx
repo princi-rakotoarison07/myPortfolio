@@ -45,30 +45,29 @@ function Projects() {
     const filterTL = gsap.timeline({
       scrollTrigger: {
         trigger: projectSecRef.current,
-        start: "20% top",
-        scrub: 2
+        start: "20% 70%",
       }
     })
 
-    filterTL.to(filterRef.current, {
+    filterTL.from(filterRef.current, {
       y: -20,
       opacity: 0,
       duration: 0.5,
       ease: "power1.out",
     })
 
-  }, [filteredProjects]);
+  }, []);
 
   return (
     <section
       id="projects"
       ref={projectSecRef}
-      className="min-h-screen max-w-6xl mx-auto bg-white text-zinc-900 py-12 px-6"
+      className="min-h-screen max-w-6xl mx-auto bg-white text-zinc-900 py-6 px-6"
     >
       <SectionTitle title="PROJECTS" theme="black" />
 
       {/* Tabs */}
-      <div className="flex justify-center mt-10 mb-10"
+      <div className="flex justify-center my-6"
         ref={filterRef}
       >
         <div className="grid grid-cols-3 grid-rows-1 gap-5 w-72">
