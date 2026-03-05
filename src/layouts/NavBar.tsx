@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import Logo from "../components/Logo";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
@@ -81,7 +81,6 @@ export function Navbar() {
     // =========================
     // Hide on scroll down
     // =========================
-    let lastScroll = 0;
 
     ScrollTrigger.create({
       start: 0,

@@ -23,8 +23,9 @@ export const mySkills = [
   }
 ]
 
+import { type ProjectCardGroup } from "../ProjectCard";
 
-export const projectsList = [
+export const projectsList : ProjectCardGroup[]= [
   {
     title: "SmartSaha",
     desc: "An intelligent mobile application for agricultural management. It helps farmers track activities, improve productivity, centralize operational data, and includes an integrated marketplace for trading and auctions between farmers and buyers.",
