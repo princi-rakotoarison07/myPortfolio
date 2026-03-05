@@ -81,17 +81,15 @@ export function Navbar() {
     // =========================
     // Hide on scroll down
     // =========================
-
     ScrollTrigger.create({
       start: 0,
       end: "max",
       onUpdate: (self) => {
         if (self.direction === 1 && self.scroll() > 120) {
-          gsap.to(nav, { y: -100, duration: 0.4 });
+          gsap.to(nav, { y: -100, duration: 0.35, ease: "power2.out" });
         } else {
-          gsap.to(nav, { y: 0, duration: 0.4 });
+          gsap.to(nav, { y: 0, duration: 0.35, ease: "power2.out" });
         }
-        lastScroll = self.scroll();
       },
     });
   });
