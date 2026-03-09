@@ -134,12 +134,29 @@ function Hero() {
     <section
     id="hero"
       ref={sectionRef}
-      className="relative flex flex-col-reverse 
-      inset-0 z-30 min-h-screen items-start justify-end pt-20 md:pt-0
-      w-full md:overflow-visible px-4 
-      md:px-10 md:flex md:flex-row 
-      md:mt-14 md:justify-between md:items-center
-      max-w-6xl mx-auto
+      className="
+      relative 
+      w-full
+      flex 
+      flex-col-reverse 
+      inset-0 
+      z-30 
+      min-h-screen 
+      max-h-screen
+      items-start 
+      justify-end 
+      pt-20 
+      px-4
+      md:pt-0
+      md:overflow-visible  
+      md:px-10 
+      md:flex 
+      md:flex-row 
+      md:mt-14 
+      md:justify-between 
+      md:items-center
+      max-w-6xl 
+      mx-auto
       "
     >
       {/* LEFT SIDE */}

@@ -1,7 +1,7 @@
 
 function Logo() {
   return (
-    <img src="/src/assets/logo.png" alt="logo" className='w-9'/>
+    <img src="/img/logo.png" alt="logo" className='w-9'/>
   )
 }
 

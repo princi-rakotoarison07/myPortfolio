@@ -54,9 +54,9 @@ export function Navbar() {
 
     // Logo shrink
     gsap.to(logoRef.current, {
-      scale: 0,
-      duration: 1.6,
-      ease: "power2.out",
+      x: -100,
+      duration: 0.6,
+      ease: "power2.in",
       scrollTrigger: {
         trigger: document.body,
         start: "top -80",
@@ -66,11 +66,12 @@ export function Navbar() {
 
     // Burger background animation
     gsap.to(burgerWrapperRef.current, {
-      backgroundColor: "#ffffff",
+      backgroundColor: isOpen?"#18181b":"#ffffff",
       borderRadius: "9999px",
+      boxShadow: "0 4px 20px rgba(0,0,0,0.05)",
       padding: "10px",
-      duration: 1.6,
-      ease: "none",
+      duration: .6,
+      ease: "elastic",
       scrollTrigger: {
         trigger: document.body,
         start: "top -80",
@@ -81,17 +82,17 @@ export function Navbar() {
     // =========================
     // Hide on scroll down
     // =========================
-    ScrollTrigger.create({
-      start: 0,
-      end: "max",
-      onUpdate: (self) => {
-        if (self.direction === 1 && self.scroll() > 120) {
-          gsap.to(nav, { y: -100, duration: 0.35, ease: "power2.out" });
-        } else {
-          gsap.to(nav, { y: 0, duration: 0.35, ease: "power2.out" });
-        }
-      },
-    });
+    // ScrollTrigger.create({
+    //   start: 0,
+    //   end: "max",
+    //   onUpdate: (self) => {
+    //     if (self.direction === 1 && self.scroll() > 120) {
+    //       gsap.to(nav, { y: -100, duration: 0.35, ease: "power2.out" });
+    //     } else {
+    //       gsap.to(nav, { y: 0, duration: 0.35, ease: "power2.out" });
+    //     }
+    //   },
+    // });
   });
 
   const toggleMenu = () => {
@@ -118,7 +119,7 @@ export function Navbar() {
 
         <div
           ref={burgerWrapperRef}
-          className="relative z-30 transition-all duration-300 shadow-md"
+          className={`relative z-30 transition-all duration-300 rounded-full ${isOpen ? "bg-none" : "bg-none"}`}
         >
           <button
             className="relative flex flex-col gap-1.5"
@@ -126,14 +127,14 @@ export function Navbar() {
           >
             <div
               className={`w-7 h-[2px] transition-all duration-500 ${
-                isOpen
-                  ? "rotate-45 translate-y-[5px] bg-black"
-                  : "bg-black"
+                isOpen && scrollY < 20
+                  ? "rotate-45 translate-y-[8px] bg-white"
+                  : (scrollY > 20 && isOpen) ? "bg-black rotate-45 translate-y-[4px]" : "bg-black"
               }`}
             />
             <div
               className={`w-7 h-[2px] transition-all duration-500 ${
-                isOpen ? "-rotate-45 bg-black" : "bg-black"
+                isOpen && scrollY < 20 ? "-rotate-45 bg-white" : (scrollY > 20 && isOpen) ? "bg-black -rotate-45 -translate-y-[4px]" : "bg-black"
               }`}
             />
           </button>
