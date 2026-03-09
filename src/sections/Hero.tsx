@@ -162,14 +162,14 @@ function Hero() {
       {/* LEFT SIDE */}
       <div
         ref={gaucheRef}
-        className="relative z-40 md:h-screen w-full gap-3 xs:gap-5 md:w-1/2 flex flex-col lg:gap-10 md:mt-5 mt-20"
-      > <p>Hi, I'm <span className="italic font-semibold">Jonathan</span> Andria</p>
-        <h1 className="text-2xl xs:text-4xl md:text-5xl text-primary">
+        className="relative z-40 md:h-screen w-full gap-3 xs:gap-10 md:w-1/2 flex flex-col lg:gap-10 md:mt-5 xl:mt-20 xl:my-auto"
+      > <p className="xl:text-3xl">Hi, I'm <span className="italic font-semibold">Jonathan</span> Andria</p>
+        <h1 className="text-2xl xs:text-4xl md:text-5xl xl:text-6xl text-primary">
           <span className="font-semibold">Full-Stack</span> Web and Mobile
           Developer.
         </h1>
 
-        <h4 className="text-primary text-xl xs:text-3xl md:text-4xl relative">
+        <h4 className="text-primary text-xl xs:text-3xl md:text-4xl xl:text-5xl relative">
           <span className="font-semibold relative z-20 mr-4"><div className="w-10 h-2 z-10 bg-red-500 relative bottom-2"></div>Creative</span>
            Web Designer.
         </h4>
@@ -194,7 +194,7 @@ function Hero() {
         <div className="flex gap-1 w-full">
           <div className="flex group w-2/3 h-[50px] " ref={togetherRef}>
             <button
-              className=" w-full h-full pointer-events-auto rounded-md group-hover:bg-red-500 transition-colors duration-700 bg-black px-2 text-white text-xl md:text-2xl"
+              className=" w-full h-full pointer-events-auto rounded-md group-hover:bg-red-500 transition-colors duration-700 bg-black px-2 text-white text-xl md:text-2xl xl:text-3xl"
               onClick={() => console.log("CTA clicked")}
             >
               Let's work together

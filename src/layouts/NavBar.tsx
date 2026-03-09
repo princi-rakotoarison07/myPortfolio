@@ -83,8 +83,9 @@ export function Navbar() {
 
   const toggleMenu = () => {
     if (!timeline.current) return;
-
+     // Add a slight delay for smoother transition
     if (isOpen) {
+      timeline.current.delay(1.6);
       timeline.current.reverse();
     } else {
       timeline.current.play();
