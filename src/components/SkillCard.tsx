@@ -72,7 +72,7 @@ const SkillCards = forwardRef<SkillCardsHandle, Props>(({ data }, ref) => {
           transition
         `}
       >
-        <h3 className=" text-7xl md:text-8xl mb-6 text-white font-thin">
+        <h3 className="text-5xl xs:text-7xl md:text-8xl mb-6 text-white font-thin">
           FRONTEND
         </h3>
 
@@ -102,7 +102,7 @@ const SkillCards = forwardRef<SkillCardsHandle, Props>(({ data }, ref) => {
             border-t-white
           `}
         >
-          <h3 className="text-7xl md:text-8xl font-thin mb-6 text-white">
+          <h3 className="text-5xl xs:text-7xl md:text-8xl font-thin mb-6 text-white">
             {group.title}
           </h3>
 

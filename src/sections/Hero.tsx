@@ -162,21 +162,21 @@ function Hero() {
       {/* LEFT SIDE */}
       <div
         ref={gaucheRef}
-        className="relative z-40 md:h-screen w-full md:w-1/2 flex flex-col gap-10 lg:gap-10 justify-start md:mt-5 mt-20"
-      >
-        <h2 className="text-4xl md:text-5xl text-primary">
+        className="relative z-40 md:h-screen w-full gap-3 xs:gap-5 md:w-1/2 flex flex-col lg:gap-10 md:mt-5 mt-20"
+      > <p>Hi, I'm <span className="italic font-semibold">Jonathan</span> Andria</p>
+        <h1 className="text-2xl xs:text-4xl md:text-5xl text-primary">
           <span className="font-semibold">Full-Stack</span> Web and Mobile
           Developer.
-        </h2>
+        </h1>
 
-        <h4 className="text-primary text-3xl md:text-4xl relative">
+        <h4 className="text-primary text-xl xs:text-3xl md:text-4xl relative">
           <span className="font-semibold relative z-20 mr-4"><div className="w-10 h-2 z-10 bg-red-500 relative bottom-2"></div>Creative</span>
            Web Designer.
         </h4>
 
         {/* SOCIALS */}
         <div>
-          <h6 className="text-primary text-xl md:text-2xl mb-2">My socials:</h6>
+          <h6 className="text-primary text-md xs:text-xl md:text-2xl mb-2">My socials:</h6>
           <div className="flex w-[10rem] justify-between">
             <a href="#" className={iconStyle}>
               <FaFacebookF className="w-6 h-6" />
