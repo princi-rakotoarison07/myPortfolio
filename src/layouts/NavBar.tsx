@@ -36,22 +36,7 @@ export function Navbar() {
     // =========================
     // NAVBAR SCROLL ANIMATION
     // =========================
-    const nav = navRef.current;
-
-    // gsap.to(nav, {
-    //   height: "64px",
-    //   backdropFilter: "blur(12px)",
-    //   backgroundColor: "rgba(255,255,255,0.75)",
-    //   boxShadow: "0 4px 20px rgba(0,0,0,0.05)",
-    //   duration: 0.3,
-    //   ease: "power2.out",
-    //   scrollTrigger: {
-    //     trigger: document.body,
-    //     start: "top -80",
-    //     toggleActions: "play none none reverse",
-    //   },
-    // });
-
+    
     // Logo shrink
     gsap.to(logoRef.current, {
       x: -100,
@@ -82,17 +67,18 @@ export function Navbar() {
     // =========================
     // Hide on scroll down
     // =========================
-    // ScrollTrigger.create({
-    //   start: 0,
-    //   end: "max",
-    //   onUpdate: (self) => {
-    //     if (self.direction === 1 && self.scroll() > 120) {
-    //       gsap.to(nav, { y: -100, duration: 0.35, ease: "power2.out" });
-    //     } else {
-    //       gsap.to(nav, { y: 0, duration: 0.35, ease: "power2.out" });
-    //     }
-    //   },
-    // });
+    const nav = navRef.current;
+    ScrollTrigger.create({
+      start: 0,
+      end: "max",
+      onUpdate: (self) => {
+        if (self.direction === 1 && self.scroll() > 120) {
+          gsap.to(nav, { y: -100, duration: 0.35, ease: "power2.out" });
+        } else {
+          gsap.to(nav, { y: 0, duration: 0.35, ease: "power2.out" });
+        }
+      },
+    });
   });
 
   const toggleMenu = () => {
