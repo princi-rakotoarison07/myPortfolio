@@ -147,15 +147,15 @@ function Hero() {
       justify-end 
       pt-20 
       px-4
-      md:pt-0
-      md:overflow-visible  
+      overflow-hidden
+      md:pt-0  
       md:px-10 
       md:flex 
       md:flex-row 
       md:mt-14 
       md:justify-between 
       md:items-center
-      max-w-6xl 
+      max-w-full 
       mx-auto
       "
     >

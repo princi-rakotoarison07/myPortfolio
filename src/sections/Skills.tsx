@@ -44,7 +44,7 @@ function Skills() {
     <section
       ref={skillSecRef}
       id="skills"
-      className="min-h-screen  max-w-6xl mx-auto flex flex-col overflow-hidden bg-zinc-900 text-white py-4 px-4 md:py-6"
+      className="min-h-screen  max-w-7xl mx-auto flex flex-col overflow-hidden bg-zinc-900 text-white py-4 px-4 md:py-6"
     >
     <SectionTitle title="SKILLS" theme='white' />
       
