@@ -8,7 +8,7 @@ export default {
   theme: {
     extend: {
       screens: {
-        xs: "380px"
+        xs: "391px"
       },
       colors: {
         background: "rgba(var(--background))",

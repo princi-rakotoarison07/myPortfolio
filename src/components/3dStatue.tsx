@@ -82,7 +82,7 @@ export default function Statue() {
   const isMobile = window.innerWidth < 768
 
   return (
-    <div className="w-full h-40 xs:h-72 md:h-screen md:absolute inset-0 overflow-visible">
+    <div className="w-full h-56 mt-20 xs:mt-0 xs:h-72 md:h-screen md:absolute inset-0 overflow-visible">
       <div
         ref={canvasRef}
         className="w-full h-full overflow-visible"
