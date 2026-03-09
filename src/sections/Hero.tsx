@@ -50,7 +50,7 @@ function Hero() {
       .from(
         gaucheRef.current.children,
         {
-          x: "-100%",
+          x: "-105%",
           stagger: 0.15,
           ease: "power2.out",
         },
