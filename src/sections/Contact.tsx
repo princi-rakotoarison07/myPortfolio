@@ -40,9 +40,9 @@ function Contact() {
     <section
       id="contact"
       ref={sectionRef}
-      className="min-h-screen md:h-fit w-full bg-zinc-900 text-white px-6 py-6"
+      className="min-h-screen md:min-h-fit w-full bg-zinc-900 text-white px-6 py-6 lg:pb-16"
     >
-      <div className="max-w-6xl mx-auto flex flex-col justify-between">
+      <div className="max-w-6xl mx-auto flex flex-col justify-between h-fit">
 
         <SectionTitle title="CONTACT" theme="white" />
 
@@ -61,27 +61,27 @@ function Contact() {
                 collaborations or opportunities.
               </p>
             </div>
-            <div className="fade-up">
-              <h3 className="text-sm uppercase tracking-widest text-zinc-500 mb-2">
+            <div className="fade-up mb-4">
+              <h3 className="text-sm uppercase tracking-widest text-zinc-500 md:mb-2">
                 Email
               </h3>
               <a
-                href="mailto:your@email.com"
+                href="mailto:jonathanandrianantenaina@gmail.com"
                 className="text-lg hover:text-zinc-300 transition"
               >
                 jonathanandrianantenaina@gmail.com
               </a>
             </div>
 
-            <div className="fade-up">
-              <h3 className="text-sm uppercase tracking-widest text-zinc-500 mb-2">
+            <div className="fade-up mb-4">
+              <h3 className="text-sm uppercase tracking-widest text-zinc-500 md:mb-2">
                 Location
               </h3>
               <p className="text-lg">Madagascar</p>
             </div>
 
             <div className="fade-up">
-              <h3 className="text-sm uppercase tracking-widest text-zinc-500 mb-4">
+              <h3 className="text-sm uppercase tracking-widest text-zinc-500 md:mb-4">
                 Social
               </h3>
               <div className="flex gap-6">
