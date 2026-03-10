@@ -182,13 +182,13 @@ function Hero() {
         <div>
           <h6 className="text-primary text-md xs:text-xl md:text-2xl mb-2">My socials:</h6>
           <div className="flex w-[10rem] justify-between">
-            <a href="#" className={iconStyle}>
+            <a href="https://web.facebook.com/jonathan.andr.947348/" className={iconStyle}>
               <FaFacebookF className="w-6 h-6" />
             </a>
-            <a href="#" className={iconStyle}>
+            <a href="www.linkedin.com/in/jonathan-andrianantenaina-6809982a1" className={iconStyle}>
               <FaLinkedinIn className="w-6 h-6" />
             </a>
-            <a href="#" className={iconStyle}>
+            <a href="https://github.com/jonathan-andri" className={iconStyle}>
               <FaGithub className="w-6 h-6" />
             </a>
           </div>

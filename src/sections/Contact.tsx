@@ -85,14 +85,14 @@ function Contact() {
                 Social
               </h3>
               <div className="flex gap-6">
-                <a href="#" className="hover:text-zinc-400 transition">
-                  GitHub
+                <a href="https://web.facebook.com/jonathan.andr.947348/" className="hover:text-zinc-400 transition">
+                  Facebook
                 </a>
-                <a href="#" className="hover:text-zinc-400 transition">
+                <a href="www.linkedin.com/in/jonathan-andrianantenaina-6809982a1" className="hover:text-zinc-400 transition">
                   LinkedIn
                 </a>
-                <a href="#" className="hover:text-zinc-400 transition">
-                  Twitter
+                <a href="https://github.com/jonathan-andri" className="hover:text-zinc-400 transition">
+                  GitHub
                 </a>
               </div>
             </div>
