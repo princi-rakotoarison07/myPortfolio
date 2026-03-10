@@ -74,7 +74,7 @@ export const projectsList : ProjectCardGroup[]= [
   {
     title: "BioMada",
     desc: "A comprehensive agricultural management system designed to assist farmers in tracking their activities, improving productivity, and centralizing operational data. It includes an integrated marketplace for trading and auctions between farmers and buyers.",
-    stacks: ["Figma", "AdobeIllustrator"],
+    stacks: ["Figma", "Adobe Illustrator"],
     images: [
       "/img/projectsImg/bioMada/1.png",
       "/img/projectsImg/bioMada/2.png",
@@ -84,7 +84,7 @@ export const projectsList : ProjectCardGroup[]= [
   {
     title: "FormaProd",
     desc: "A design project focused on creating a visually appealing and user-friendly interface for a fictional interior design company. The project showcases my skills in UI/UX design, utilizing tools like Figma and Adobe Illustrator to craft an engaging user experience.",
-    stacks:  ["Figma", "AdobeIllustrator"],
+    stacks:  ["Figma", "Adobe Illustrator"],
     images: [
       "/img/projectsImg/madeco/2.png",
       "/img/projectsImg/madeco/1.png",
@@ -94,7 +94,7 @@ export const projectsList : ProjectCardGroup[]= [
   {
     title: "Design For A School Management System",
     desc: "A design project centered around creating an intuitive and visually appealing interface for a school management system. The project highlights my proficiency in UI/UX design, utilizing tools like Figma and Adobe Illustrator to craft an engaging user experience for students, teachers, and administrators.",
-    stacks:  ["Figma", "AdobeIllustrator"],
+    stacks:  ["Figma", "Adobe Illustrator"],
     images: [
       "/img/projectsImg/school/1.png",
     ],
