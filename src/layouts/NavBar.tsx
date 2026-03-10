@@ -21,7 +21,7 @@ export function Navbar() {
   useGSAP(() => {
     // Initial state
     gsap.set(menuRef.current, { x: isMobile ? "100%" : "120%" });
-
+    if (!menuRef.current) return;
     // =========================
     // MENU TIMELINE
     // =========================
@@ -31,8 +31,17 @@ export function Navbar() {
         x: 0,
         duration: 0.8,
         ease: "power3.inOut",
-      });
-
+      })
+      .from(menuRef.current.children,
+        {
+          x: 50,
+          opacity: 0,
+          stagger: 0.1,
+          duration: 0.6,
+          ease: "power2.out",
+        },'.3'
+      )
+    
     // =========================
     // NAVBAR SCROLL ANIMATION
     // =========================
@@ -130,7 +139,7 @@ export function Navbar() {
         {/* Slide Menu */}
         <div
           ref={menuRef}
-          className="fixed top-0 text-thin text-left right-0 h-screen w-full md:w-[30%] bg-black text-white flex flex-col justify-center items-center gap-8 text-3xl"
+          className="fixed top-0 text-thin text-left right-0 h-screen w-full md:w-[30%] bg-black text-white flex flex-col justify-center md:items-start md:pl-6 items-center gap-8 text-3xl"
         >
           {navLinks.map((link, index) => (
             <NavLinkItem

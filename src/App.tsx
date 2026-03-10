@@ -1,5 +1,4 @@
 import './App.css'
-import NeuralBackground from './components/NeuralBg'
 import { MainLayout } from './layouts/MainLayout'
 import { Navbar } from './layouts/NavBar'
 import Hero from './sections/Hero'
@@ -11,9 +10,7 @@ import Contact from './sections/Contact'
 function App() {
   const containerRef = useRef<HTMLDivElement>(null);
   return (
-    <>
-      <NeuralBackground />
-    
+    <>    
      <MainLayout>
       <div className='overflow-hidden' ref={containerRef}>
           <Navbar />

@@ -85,7 +85,7 @@ const ProjectCard = forwardRef<ProjectsCardHandle, Props>(({ data }, ref) => {
 
       gsap.set(card, {
         opacity: 0,
-        y: 140,
+        y: 40,
         scale: 0.95,
         filter: "blur(8px)"
       });
@@ -95,7 +95,7 @@ const ProjectCard = forwardRef<ProjectsCardHandle, Props>(({ data }, ref) => {
         y: 0,
         scale: 1,
         filter: "blur(0px)",
-        duration: 0.9,
+        duration: 0.3,
         ease: "power3.out",
         scrollTrigger: {
           trigger: card,
